@@ -10,7 +10,7 @@ export async function loadSpreadsData(): Promise<SpreadsData> {
   }
   
   try {
-    const response = await fetch('/src/data/spreads.json');
+    const response = await fetch('/data/spreads.json');
     spreadsData = await response.json();
     return spreadsData;
   } catch (error) {
@@ -25,7 +25,7 @@ export async function loadQuestionPatterns(): Promise<QuestionPatterns> {
   }
   
   try {
-    const response = await fetch('/src/data/questionPatterns.json');
+    const response = await fetch('/data/questionPatterns.json');
     questionPatterns = await response.json();
     return questionPatterns;
   } catch (error) {
