@@ -86,15 +86,31 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
                   </p>
                 </div>
 
-                <div className="aspect-[2/3] rounded-xl bg-gradient-card border-2 border-accent/30 mb-4 flex items-center justify-center shadow-card">
-                  <div className="text-center p-4">
-                    <div className="text-5xl mb-4 animate-float">✦</div>
-                    <h4 className="text-lg font-bold text-foreground mb-1">
-                      {card.nameKo}
-                    </h4>
-                    <p className="text-xs text-muted-foreground">
-                      {card.name}
-                    </p>
+                <div className="aspect-[2/3] rounded-xl bg-gradient-card border-2 border-accent/30 mb-4 flex items-center justify-center shadow-card relative overflow-hidden">
+                  {/* 카드 이미지 또는 fallback */}
+                  <img
+                    src={card.imagePath}
+                    alt={card.nameKo}
+                    className="w-full h-full object-cover rounded-xl"
+                    onError={(e) => {
+                      // 이미지 로드 실패 시 fallback 표시
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const fallback = target.nextElementSibling as HTMLElement;
+                      if (fallback) fallback.style.display = 'flex';
+                    }}
+                  />
+                  {/* Fallback (기본 심볼) */}
+                  <div className="absolute inset-0 flex items-center justify-center text-center p-4" style={{ display: 'none' }}>
+                    <div>
+                      <div className="text-5xl mb-4 animate-float">✦</div>
+                      <h4 className="text-lg font-bold text-foreground mb-1">
+                        {card.nameKo}
+                      </h4>
+                      <p className="text-xs text-muted-foreground">
+                        {card.name}
+                      </p>
+                    </div>
                   </div>
                 </div>
 
