@@ -14,19 +14,34 @@ interface ReadingResultProps {
 
 export function ReadingResult({ spreadType, selectedCards, question, onReset }: ReadingResultProps) {
   const [positions, setPositions] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadPositions = async () => {
       try {
+        setIsLoading(true);
         const positionsData = await getSpreadPositions(spreadType);
         setPositions(positionsData);
       } catch (error) {
         console.error('Failed to load positions:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     loadPositions();
   }, [spreadType]);
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-mystic flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">결과를 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-mystic p-6">
@@ -49,7 +64,7 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
             const card = tarotDeck.find((c) => c.id === cardId);
             const position = positions[index];
             
-            if (!card) return null;
+            if (!card || !position) return null;
 
             return (
               <div
