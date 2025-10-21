@@ -72,47 +72,51 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
             타로 해석
           </h2>
           <div className="bg-card/50 p-6 rounded-xl max-w-2xl mx-auto border border-border">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="flex-1">
-                <p className="text-foreground font-medium italic">
-                  <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
-                </p>
+            <div className="space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <p className="text-foreground font-medium italic">
+                    <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
+                  </p>
+                </div>
+                <Button
+                  onClick={handleCopy}
+                  variant="outline"
+                  size="sm"
+                  className="sm:ml-4 flex items-center gap-2"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      복사됨
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      복사
+                    </>
+                  )}
+                </Button>
               </div>
-              <Button
-                onClick={handleCopy}
-                variant="outline"
-                size="sm"
-                className="sm:ml-4 flex items-center gap-2"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    복사됨
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4" />
-                    복사
-                  </>
-                )}
-              </Button>
-            </div>
-            
-            {/* 뽑은 카드 리스트 */}
-            <div className="mt-4 pt-4 border-t border-border/50">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="text-sm text-muted-foreground">뽑은 카드:</span>
-                {selectedCards.map((cardId, index) => {
-                  const card = tarotDeck.find((c) => c.id === cardId);
-                  return (
-                    <span
-                      key={index}
-                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
-                    >
-                      {index + 1}. {card?.nameKo || '알 수 없는 카드'}
-                    </span>
-                  );
-                })}
+              
+              {/* 뽑은 카드 리스트 */}
+              <div className="pt-4 border-t border-border/50">
+                <div className="flex items-start gap-2">
+                  <span className="text-sm text-muted-foreground flex-shrink-0">뽑은 카드:</span>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedCards.map((cardId, index) => {
+                      const card = tarotDeck.find((c) => c.id === cardId);
+                      return (
+                        <span
+                          key={index}
+                          className="bg-primary/10 text-white px-3 py-1 rounded-full text-sm font-medium"
+                        >
+                          {index + 1}. {card?.nameKo || '알 수 없는 카드'}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -174,23 +178,28 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
                 </div>
 
                 <div className="space-y-3">
-                  <div>
-                    <h5 className="text-sm font-semibold text-foreground mb-1">
+                  <div className="flex items-center gap-2">
+                    <h5 className="text-sm font-semibold text-foreground">
                       의미:
                     </h5>
                     <p className="text-sm text-muted-foreground">
                       {card.meaning}
                     </p>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {card.keywords.map((keyword, i) => (
-                      <span
-                        key={i}
-                        className="px-2 py-1 bg-secondary rounded-full text-xs text-foreground border border-border"
-                      >
-                        {keyword}
-                      </span>
-                    ))}
+                  <div className="flex items-center gap-2">
+                    <h5 className="text-sm font-semibold text-foreground">
+                      키워드:
+                    </h5>
+                    <div className="flex flex-wrap gap-2">
+                      {card.keywords.map((keyword, i) => (
+                        <span
+                          key={i}
+                          className="px-2 py-1 bg-secondary rounded-full text-xs text-foreground border border-border"
+                        >
+                          {keyword}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

@@ -106,9 +106,9 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           </p>
           
           {/* 카드 선택 가이드 */}
-          <div className="mt-6">
-            <div className="bg-card/50 p-6 rounded-xl border border-border/50">
-              <h4 className="text-sm font-semibold text-foreground mb-2">
+          <div className="mt-6 flex justify-center">
+            <div className="bg-card/50 p-6 rounded-xl border border-border/50 text-left max-w-2xl">
+              <h4 className="text-sm font-semibold text-foreground mb-2 text-center">
                 💡 카드 선택 가이드
               </h4>
               <div className="text-xs text-muted-foreground space-y-1">
