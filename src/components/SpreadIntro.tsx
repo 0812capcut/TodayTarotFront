@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
-import { SpreadType, spreadPositions } from "@/types/tarot";
-import { getSpreadDescription } from "@/utils/spreadRecommender";
+import { SpreadType } from "@/types/tarot";
+import { getSpreadDescription, getSpreadPositions } from "@/utils/dataLoader";
 import { HandHeart, ArrowLeft } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface SpreadIntroProps {
   spreadType: SpreadType;
@@ -11,7 +12,25 @@ interface SpreadIntroProps {
 }
 
 export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadIntroProps) {
-  const positions = spreadPositions[spreadType];
+  const [positions, setPositions] = useState<any[]>([]);
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    const loadSpreadData = async () => {
+      try {
+        const [positionsData, descriptionData] = await Promise.all([
+          getSpreadPositions(spreadType),
+          getSpreadDescription(spreadType)
+        ]);
+        setPositions(positionsData);
+        setDescription(descriptionData);
+      } catch (error) {
+        console.error('Failed to load spread data:', error);
+      }
+    };
+
+    loadSpreadData();
+  }, [spreadType]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-mystic p-6">
@@ -26,7 +45,7 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
           </h2>
           
           <p className="text-center text-muted-foreground mb-8">
-            {getSpreadDescription(spreadType)}
+            {description}
           </p>
 
           <div className="bg-secondary/50 p-6 rounded-xl mb-8 border border-border">

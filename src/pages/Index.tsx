@@ -15,9 +15,9 @@ const Index = () => {
   const [spreadType, setSpreadType] = useState<SpreadType>(3);
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
-  const handleQuestionSubmit = (q: string) => {
+  const handleQuestionSubmit = async (q: string) => {
     setQuestion(q);
-    const recommended = recommendSpread(q);
+    const recommended = await recommendSpread(q);
     setSpreadType(recommended);
     setStep("intro");
   };

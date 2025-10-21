@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { SpreadType, spreadPositions } from "@/types/tarot";
+import { SpreadType } from "@/types/tarot";
 import { tarotDeck } from "@/data/tarotDeck";
+import { getSpreadPositions } from "@/utils/dataLoader";
 import { RotateCcw, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 
 interface ReadingResultProps {
   spreadType: SpreadType;
@@ -11,7 +13,20 @@ interface ReadingResultProps {
 }
 
 export function ReadingResult({ spreadType, selectedCards, question, onReset }: ReadingResultProps) {
-  const positions = spreadPositions[spreadType];
+  const [positions, setPositions] = useState<any[]>([]);
+
+  useEffect(() => {
+    const loadPositions = async () => {
+      try {
+        const positionsData = await getSpreadPositions(spreadType);
+        setPositions(positionsData);
+      } catch (error) {
+        console.error('Failed to load positions:', error);
+      }
+    };
+
+    loadPositions();
+  }, [spreadType]);
 
   return (
     <div className="min-h-screen bg-gradient-mystic p-6">
