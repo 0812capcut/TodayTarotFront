@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { QuestionInput } from "@/components/QuestionInput";
+import { SpreadSelector } from "@/components/SpreadSelector";
 import { SpreadIntro } from "@/components/SpreadIntro";
 import { CardSelection } from "@/components/CardSelection";
 import { ReadingResult } from "@/components/ReadingResult";
-import { recommendSpread } from "@/utils/spreadRecommender";
 import { SpreadType } from "@/types/tarot";
 import { tarotDeck } from "@/data/tarotDeck";
 
-type Step = "question" | "intro" | "selection" | "result";
+type Step = "question" | "spread-select" | "intro" | "selection" | "result";
 
 const Index = () => {
   const [step, setStep] = useState<Step>("question");
@@ -15,10 +15,13 @@ const Index = () => {
   const [spreadType, setSpreadType] = useState<SpreadType>("3");
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
-  const handleQuestionSubmit = async (q: string) => {
+  const handleQuestionSubmit = (q: string) => {
     setQuestion(q);
-    const recommended = await recommendSpread(q);
-    setSpreadType(recommended);
+    setStep("spread-select");
+  };
+
+  const handleSpreadSelect = (selectedSpreadType: SpreadType) => {
+    setSpreadType(selectedSpreadType);
     setStep("intro");
   };
 
@@ -40,6 +43,14 @@ const Index = () => {
   return (
     <>
       {step === "question" && <QuestionInput onSubmit={handleQuestionSubmit} />}
+      
+      {step === "spread-select" && (
+        <SpreadSelector
+          question={question}
+          onSelect={handleSpreadSelect}
+          onBack={handleReset}
+        />
+      )}
       
       {step === "intro" && (
         <SpreadIntro
