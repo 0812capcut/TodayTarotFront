@@ -26,7 +26,8 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
   }, [totalCards]);
 
   const handleCardClick = (cardId: number) => {
-    if (selectedCards.length >= spreadType || isFlipping !== null) return;
+    const requiredCards = parseInt(spreadType.toString());
+    if (selectedCards.length >= requiredCards || isFlipping !== null) return;
 
     setIsFlipping(cardId);
     
@@ -35,7 +36,7 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
       setSelectedCards(newSelected);
       setIsFlipping(null);
 
-      if (newSelected.length === spreadType) {
+      if (newSelected.length === requiredCards) {
         setTimeout(() => {
           onComplete(newSelected);
         }, 600);

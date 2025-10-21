@@ -12,7 +12,7 @@ type Step = "question" | "intro" | "selection" | "result";
 const Index = () => {
   const [step, setStep] = useState<Step>("question");
   const [question, setQuestion] = useState("");
-  const [spreadType, setSpreadType] = useState<SpreadType>(3);
+  const [spreadType, setSpreadType] = useState<SpreadType>("3");
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
 
   const handleQuestionSubmit = async (q: string) => {
