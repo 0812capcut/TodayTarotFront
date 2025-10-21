@@ -3,6 +3,7 @@ import { SpreadType } from "@/types/tarot";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { Sparkles } from "lucide-react";
 
 interface CardSelectionProps {
@@ -51,6 +52,9 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
       <Dialog open={showInstruction} onOpenChange={setShowInstruction}>
         <DialogContent className="sm:max-w-md bg-card border-border">
           <DialogHeader className="text-center">
+            <VisuallyHidden>
+              <DialogTitle>카드 선택 안내</DialogTitle>
+            </VisuallyHidden>
             <div className="flex items-center justify-center mb-4">
               <Sparkles className="w-12 h-12 text-accent animate-glow-pulse" />
             </div>
