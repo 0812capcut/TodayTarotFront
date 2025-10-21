@@ -3,7 +3,7 @@ import { SpreadType } from "@/types/tarot";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Sparkles } from "lucide-react";
 
 interface CardSelectionProps {
