@@ -1,73 +1,96 @@
-# Welcome to your Lovable project
+# TodayTarotFront - 당신을 위한 타로
 
-## Project info
+React + TypeScript 기반의 인터랙티브 타로카드 리딩 웹 애플리케이션입니다.
 
-**URL**: https://lovable.dev/projects/31f0228b-7e0f-4fd3-b5de-bc31482f4cb8
+## ✨ 주요 기능
 
-## How can I edit this code?
+### 🎴 다양한 스프레드
+- **기본 스프레드**: 2장, 3장, 5장, 7장, 10장 배열법
+- **투자 스프레드**: 데일리 인베스트, 리스크 밸런스, 타이밍 분석
+- **사랑 스프레드**: 연애 궁합, 관계 치유
+- **진로 스프레드**: 진로 결정, 면접 성공
+- **건강 스프레드**: 건강 분석, 정신 치유
+- **창작 스프레드**: 창작 영감, 예술가 진로
+- **학습 스프레드**: 학습 가이드, 시험 성공
 
-There are several ways of editing your application.
+### 🤖 스마트 질문 분석
+- 질문 내용을 자동으로 분석하여 최적의 스프레드 추천
+- JSON 기반 설정으로 새로운 스프레드 쉽게 추가 가능
 
-**Use Lovable**
+### 🎨 아름다운 UI/UX
+- 신비로운 보라/금색 테마
+- 부드러운 애니메이션 효과
+- 반응형 디자인
+- 직관적인 사용자 인터페이스
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/31f0228b-7e0f-4fd3-b5de-bc31482f4cb8) and start prompting.
+## 🚀 시작하기
 
-Changes made via Lovable will be committed automatically to this repo.
+### 설치
+```bash
+npm install
+```
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### 개발 서버 실행
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### 빌드
+```bash
+npm run build
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ 기술 스택
 
-**Use GitHub Codespaces**
+- **Frontend**: React 18, TypeScript, Vite
+- **UI**: shadcn/ui, Radix UI, Tailwind CSS
+- **상태 관리**: React Query, React Router
+- **개발 도구**: ESLint, TypeScript
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📁 프로젝트 구조
 
-## What technologies are used for this project?
+```
+src/
+├── components/          # React 컴포넌트
+│   ├── ui/             # shadcn/ui 컴포넌트
+│   ├── CardSelection.tsx
+│   ├── QuestionInput.tsx
+│   ├── ReadingResult.tsx
+│   └── SpreadIntro.tsx
+├── data/               # JSON 데이터
+│   ├── spreads.json    # 스프레드 정보
+│   ├── questionPatterns.json
+│   └── tarotDeck.ts    # 타로 카드 데이터
+├── hooks/              # 커스텀 훅
+├── lib/                # 유틸리티
+├── pages/              # 페이지 컴포넌트
+├── types/              # TypeScript 타입 정의
+└── utils/              # 유틸리티 함수
+```
 
-This project is built with:
+## 🎯 사용법
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. **질문 입력**: 궁금한 내용을 자유롭게 입력
+2. **스프레드 선택**: 질문에 따라 자동으로 추천된 스프레드 확인
+3. **카드 선택**: 안내에 따라 신중히 카드 선택
+4. **해석 확인**: 선택된 카드의 상세한 의미와 해석 확인
 
-## How can I deploy this project?
+## 🔧 스프레드 추가
 
-Simply open [Lovable](https://lovable.dev/projects/31f0228b-7e0f-4fd3-b5de-bc31482f4cb8) and click on Share -> Publish.
+새로운 스프레드를 추가하려면:
 
-## Can I connect a custom domain to my Lovable project?
+1. `src/data/spreads.json`에 스프레드 정보 추가
+2. `src/data/questionPatterns.json`에 질문 패턴 추가
+3. 코드 수정 없이 자동으로 적용됨!
 
-Yes, you can!
+## 📝 라이선스
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+이 프로젝트는 MIT 라이선스 하에 배포됩니다.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 🤝 기여하기
+
+버그 리포트나 기능 제안은 언제든 환영합니다!
+
+---
+
+**Tarot by You** - 당신의 질문에 타로가 답합니다 ✨
