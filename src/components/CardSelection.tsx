@@ -54,11 +54,9 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
             <div className="flex items-center justify-center mb-4">
               <Sparkles className="w-12 h-12 text-accent animate-glow-pulse" />
             </div>
-            <DialogTitle className="text-2xl font-bold text-foreground">
-              카드 선택 안내
-            </DialogTitle>
             <DialogDescription className="text-lg text-muted-foreground mt-4">
-              질문을 마음속에 떠올리며 신중히 카드를 뽑으세요
+              질문을 마음속에 떠올리며<br />
+              신중히 카드를 뽑으세요
             </DialogDescription>
           </DialogHeader>
           <div className="text-center mt-6">

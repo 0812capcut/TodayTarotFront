@@ -76,9 +76,6 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
           </div>
 
           <div className="text-center">
-            <p className="text-sm text-muted-foreground mb-6">
-              질문을 마음속에 떠올리며 신중히 카드를 선택하세요
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 onClick={onBack}
