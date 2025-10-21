@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { SpreadType } from "@/types/tarot";
 import { tarotDeck } from "@/data/tarotDeck";
 import { getSpreadPositions } from "@/utils/dataLoader";
-import { RotateCcw, Sparkles } from "lucide-react";
+import { RotateCcw, Sparkles, Copy, Check } from "lucide-react";
 import { useState, useEffect } from "react";
 
 interface ReadingResultProps {
@@ -15,6 +15,7 @@ interface ReadingResultProps {
 export function ReadingResult({ spreadType, selectedCards, question, onReset }: ReadingResultProps) {
   const [positions, setPositions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const loadPositions = async () => {
@@ -31,6 +32,23 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
 
     loadPositions();
   }, [spreadType]);
+
+  const handleCopy = async () => {
+    const cardNames = selectedCards.map((cardId, index) => {
+      const card = tarotDeck.find((c) => c.id === cardId);
+      return `${index + 1}. ${card?.nameKo || '알 수 없는 카드'}`;
+    }).join('\n');
+
+    const copyText = `당신의 질문: "${question}"\n\n${cardNames}`;
+
+    try {
+      await navigator.clipboard.writeText(copyText);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('복사 실패:', err);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -54,8 +72,49 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
             타로 해석
           </h2>
           <div className="bg-card/50 p-6 rounded-xl max-w-2xl mx-auto border border-border">
-            <p className="text-sm text-muted-foreground mb-2">당신의 질문:</p>
-            <p className="text-foreground font-medium italic">"{question}"</p>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-foreground font-medium italic">
+                  <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
+                </p>
+              </div>
+              <Button
+                onClick={handleCopy}
+                variant="outline"
+                size="sm"
+                className="sm:ml-4 flex items-center gap-2"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    복사됨
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    복사
+                  </>
+                )}
+              </Button>
+            </div>
+            
+            {/* 뽑은 카드 리스트 */}
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="text-sm text-muted-foreground">뽑은 카드:</span>
+                {selectedCards.map((cardId, index) => {
+                  const card = tarotDeck.find((c) => c.id === cardId);
+                  return (
+                    <span
+                      key={index}
+                      className="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium"
+                    >
+                      {index + 1}. {card?.nameKo || '알 수 없는 카드'}
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 

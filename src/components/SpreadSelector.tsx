@@ -25,21 +25,41 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
   useEffect(() => {
     const loadOptions = async () => {
       try {
-        const spreadsData = await loadSpreadsData();
-        const options: SpreadOption[] = [];
+        // 기본 배열법만 표시 (2장, 3장, 5장, 7장, 10장)
+        const basicSpreads = [
+          {
+            id: "2",
+            name: "2장의 카드 선택",
+            description: "A 선택지, B 선택지를 볼 수 있습니다.",
+            cardCount: 2
+          },
+          {
+            id: "3", 
+            name: "3장의 카드 선택",
+            description: "과거, 현재, 미래를 볼 수 있습니다.",
+            cardCount: 3
+          },
+          {
+            id: "5",
+            name: "5장의 카드 선택", 
+            description: "상황, 문제, 해결, 결과, 전망을 볼 수 있습니다.",
+            cardCount: 5
+          },
+          {
+            id: "7",
+            name: "7장의 카드 선택",
+            description: "현재, 과거, 미래, 내면, 외부, 조언, 결과를 볼 수 있습니다.",
+            cardCount: 7
+          },
+          {
+            id: "10",
+            name: "10장의 카드 선택",
+            description: "현재 상황, 도전, 과거, 미래, 가능성, 근처 미래, 당신, 외부 영향, 희망, 결과를 볼 수 있습니다.",
+            cardCount: 10
+          }
+        ];
         
-        for (const [id, data] of Object.entries(spreadsData.spreads)) {
-          options.push({
-            id,
-            name: data.name,
-            description: data.description,
-            cardCount: data.positions.length
-          });
-        }
-        
-        // 카드 수별로 정렬 (2장, 3장, 5장, 7장, 10장 순)
-        options.sort((a, b) => a.cardCount - b.cardCount);
-        setSpreadOptions(options);
+        setSpreadOptions(basicSpreads);
       } catch (error) {
         console.error('Failed to load spread options:', error);
       } finally {
@@ -79,14 +99,27 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           </div>
           
           <h1 className="text-4xl font-bold mb-4 text-foreground">
-            배열법을 선택해주세요
+            원하는 카드 수를 선택하세요
           </h1>
           <p className="text-lg text-muted-foreground mb-2">
             질문: <span className="text-accent font-medium">"{question}"</span>
           </p>
-          <p className="text-sm text-muted-foreground">
-            원하는 카드 수와 배열법을 선택하세요
-          </p>
+          
+          {/* 카드 선택 가이드 */}
+          <div className="mt-6">
+            <div className="bg-card/50 p-6 rounded-xl border border-border/50">
+              <h4 className="text-sm font-semibold text-foreground mb-2">
+                💡 카드 선택 가이드
+              </h4>
+              <div className="text-xs text-muted-foreground space-y-1">
+                <p>• <strong>2장의 카드 선택</strong>: A 선택지, B 선택지 비교</p>
+                <p>• <strong>3장의 카드 선택</strong>: 과거, 현재, 미래의 흐름</p>
+                <p>• <strong>5장의 카드 선택</strong>: 상황, 문제, 해결, 결과, 전망</p>
+                <p>• <strong>7장의 카드 선택</strong>: 현재, 과거, 미래, 내면, 외부, 조언, 결과</p>
+                <p>• <strong>10장의 카드 선택</strong>: 인생 전체의 흐름과 조언</p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 배열법 선택 그리드 */}
@@ -133,21 +166,6 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           ))}
         </div>
 
-        {/* 도움말 */}
-        <div className="mt-12 text-center">
-          <div className="bg-card/50 p-6 rounded-xl border border-border/50">
-            <h4 className="text-sm font-semibold text-foreground mb-2">
-              💡 배열법 선택 가이드
-            </h4>
-            <div className="text-xs text-muted-foreground space-y-1">
-              <p>• <strong>2장</strong>: 간단한 선택과 결정</p>
-              <p>• <strong>3장</strong>: 과거, 현재, 미래의 흐름</p>
-              <p>• <strong>5장</strong>: 상황 분석과 해결책</p>
-              <p>• <strong>7장</strong>: 종합적인 분석과 전망</p>
-              <p>• <strong>10장</strong>: 인생 전체의 흐름</p>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
