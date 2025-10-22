@@ -25,16 +25,16 @@ const Index = () => {
     if (questionParam) {
       try {
         // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
-        const decodedQuestion = decodeURIComponent(questionParam);
-        setQuestion(decodedQuestion);
+        // URLSearchParams는 이미 자동으로 디코딩하므로 추가 디코딩 불필요
+        setQuestion(questionParam);
         setStep("spread-select");
         
         if (returnUrlParam) {
-          setReturnUrl(decodeURIComponent(returnUrlParam));
+          setReturnUrl(returnUrlParam);
         }
       } catch (error) {
-        console.error('URL 디코딩 오류:', error);
-        // 디코딩 실패 시 원본 사용
+        console.error('URL 파라미터 처리 오류:', error);
+        // 오류 발생 시 원본 사용
         setQuestion(questionParam);
         setStep("spread-select");
       }
