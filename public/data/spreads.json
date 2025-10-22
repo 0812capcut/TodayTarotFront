@@ -4,57 +4,57 @@
       "name": "2장 배열법",
       "description": "두 가지 선택지를 비교하는 배열법입니다.",
       "positions": [
-        { "position": 0, "name": "A 선택지", "description": "첫 번째 선택의 결과" },
-        { "position": 1, "name": "B 선택지", "description": "두 번째 선택의 결과" }
+        { "position": 0, "name": "첫번째 카드", "description": "A 선택지" },
+        { "position": 1, "name": "두번째 카드", "description": "B 선택지" }
       ]
     },
     "3": {
       "name": "3장 배열법",
       "description": "과거, 현재, 미래를 볼 수 있습니다.",
       "positions": [
-        { "position": 0, "name": "과거", "description": "상황의 뿌리와 원인" },
-        { "position": 1, "name": "현재", "description": "현재의 상황과 영향" },
-        { "position": 2, "name": "미래", "description": "앞으로의 전개" }
+        { "position": 0, "name": "첫번째 카드", "description": "과거" },
+        { "position": 1, "name": "두번째 카드", "description": "현재" },
+        { "position": 2, "name": "세번째 카드", "description": "미래" }
       ]
     },
     "5": {
       "name": "5장 배열법",
       "description": "상황을 깊이 분석하는 배열법입니다.",
       "positions": [
-        { "position": 0, "name": "현재 상황", "description": "지금의 위치" },
-        { "position": 1, "name": "도전", "description": "극복해야 할 장애물" },
-        { "position": 2, "name": "과거", "description": "영향을 준 과거" },
-        { "position": 3, "name": "미래", "description": "가까운 미래" },
-        { "position": 4, "name": "결과", "description": "최종 결과" }
+        { "position": 0, "name": "첫번째 카드", "description": "현재 상황" },
+        { "position": 1, "name": "두번째 카드", "description": "도전" },
+        { "position": 2, "name": "세번째 카드", "description": "과거" },
+        { "position": 3, "name": "네번째 카드", "description": "미래" },
+        { "position": 4, "name": "다섯번째 카드", "description": "결과" }
       ]
     },
     "7": {
       "name": "7장 배열법",
       "description": "장기적인 전망과 진로를 보는 배열법입니다.",
       "positions": [
-        { "position": 0, "name": "현재", "description": "현재 상태" },
-        { "position": 1, "name": "장애물", "description": "극복할 것" },
-        { "position": 2, "name": "목표", "description": "도달하려는 곳" },
-        { "position": 3, "name": "과거", "description": "기초와 뿌리" },
-        { "position": 4, "name": "최근", "description": "최근 상황" },
-        { "position": 5, "name": "미래", "description": "가까운 미래" },
-        { "position": 6, "name": "결과", "description": "최종 결과" }
+        { "position": 0, "name": "첫번째 카드", "description": "현재" },
+        { "position": 1, "name": "두번째 카드", "description": "장애물" },
+        { "position": 2, "name": "세번째 카드", "description": "목표" },
+        { "position": 3, "name": "네번째 카드", "description": "과거" },
+        { "position": 4, "name": "다섯번째 카드", "description": "최근" },
+        { "position": 5, "name": "여섯번째 카드", "description": "미래" },
+        { "position": 6, "name": "일곱번째 카드", "description": "결과" }
       ]
     },
     "10": {
       "name": "10장 배열법",
       "description": "인생 전체를 조망하는 켈틱 크로스 배열법입니다.",
       "positions": [
-        { "position": 0, "name": "현재 상황", "description": "현재의 중심" },
-        { "position": 1, "name": "도전", "description": "넘어야 할 것" },
-        { "position": 2, "name": "목표", "description": "의식적 목표" },
-        { "position": 3, "name": "뿌리", "description": "무의식의 기반" },
-        { "position": 4, "name": "과거", "description": "지나간 영향" },
-        { "position": 5, "name": "미래", "description": "가능한 미래" },
-        { "position": 6, "name": "내면", "description": "당신의 태도" },
-        { "position": 7, "name": "외부 영향", "description": "주변의 영향" },
-        { "position": 8, "name": "희망과 두려움", "description": "깊은 감정" },
-        { "position": 9, "name": "최종 결과", "description": "최종 결론" }
+        { "position": 0, "name": "첫번째 카드", "description": "현재 상황" },
+        { "position": 1, "name": "두번째 카드", "description": "도전" },
+        { "position": 2, "name": "세번째 카드", "description": "목표" },
+        { "position": 3, "name": "네번째 카드", "description": "뿌리" },
+        { "position": 4, "name": "다섯번째 카드", "description": "과거" },
+        { "position": 5, "name": "여섯번째 카드", "description": "미래" },
+        { "position": 6, "name": "일곱번째 카드", "description": "내면" },
+        { "position": 7, "name": "여덟번째 카드", "description": "외부 영향" },
+        { "position": 8, "name": "아홉번째 카드", "description": "희망과 두려움" },
+        { "position": 9, "name": "열번째 카드", "description": "최종 결과" }
       ]
     },
     "daily-invest": {

@@ -114,15 +114,13 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
                     "relative overflow-hidden"
                   )}
                 >
-                  {/* 카드 뒷면 패턴 */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/80 to-secondary">
-                    <div className="absolute inset-0 opacity-20"
-                      style={{
-                        backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)`
-                      }}
-                    />
-                  </div>
-                  <div className="relative text-4xl text-accent">✦</div>
+                  {/* 카드 뒷면 이미지 */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                      backgroundImage: `url('/images/cards/card_back.png')`
+                    }}
+                  />
                 </div>
               </button>
             ))}

@@ -137,8 +137,8 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
               )}
               style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
+                <div className="text-center mb-4">
+                  <div className="flex items-center justify-center gap-2 mb-2">
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
                       {option.cardCount}
                     </div>
@@ -146,7 +146,7 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
                       {option.name}
                     </h3>
                   </div>
-                  <Sparkles className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <Sparkles className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-opacity mx-auto" />
                 </div>
                 
                 <p className="text-sm text-muted-foreground mb-4">

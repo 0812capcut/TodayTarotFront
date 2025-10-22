@@ -40,13 +40,9 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
             <HandHeart className="w-12 h-12 text-accent animate-glow-pulse" />
           </div>
 
-          <h2 className="text-3xl font-bold text-center mb-4 text-foreground">
+          <h2 className="text-3xl font-bold text-center mb-8 text-foreground">
             {spreadType}장 배열법
           </h2>
-          
-          <p className="text-center text-muted-foreground mb-8">
-            {description}
-          </p>
 
           <div className="bg-secondary/50 p-6 rounded-xl mb-8 border border-border">
             <p className="text-sm text-muted-foreground mb-2">당신의 질문:</p>
@@ -54,22 +50,20 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
           </div>
 
           <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-4 text-foreground">
-              각 위치의 의미:
-            </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {positions.map((pos) => (
                 <div
                   key={pos.position}
                   className="bg-secondary/30 p-4 rounded-lg border border-border"
                 >
-                  <div className="flex items-center gap-2 mb-2">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
-                      {pos.position + 1}
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-bold">
+                        {pos.position + 1}
+                      </div>
+                      <h4 className="font-semibold text-foreground">{pos.name}</h4>
                     </div>
-                    <h4 className="font-semibold text-foreground">{pos.name}</h4>
                   </div>
-                  <p className="text-sm text-muted-foreground">{pos.description}</p>
                 </div>
               ))}
             </div>

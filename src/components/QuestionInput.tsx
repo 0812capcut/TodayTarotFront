@@ -60,7 +60,9 @@ export function QuestionInput({ onSubmit }: QuestionInputProps) {
 
         <div className="mt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            💫 질문을 명확하게 작성할수록 더 정확한 답을 얻을 수 있습니다
+            💫 타로는 무의식을 비추는 언어입니다.<br />
+            마음속 질문이 또렷할수록,<br />
+            타로는 당신의 무의식에 더 가까워집니다.
           </p>
         </div>
       </div>
