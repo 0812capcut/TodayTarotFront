@@ -18,26 +18,25 @@ const Index = () => {
 
   // URL 파라미터 처리 (GPT 연동)
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const questionParam = urlParams.get('q');
-    const returnUrlParam = urlParams.get('return_url');
-    
-    if (questionParam) {
-      try {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const questionParam = urlParams.get('q');
+      const returnUrlParam = urlParams.get('return_url');
+      
+      if (questionParam) {
         // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
-        // URLSearchParams는 이미 자동으로 디코딩하므로 추가 디코딩 불필요
+        console.log('받은 질문:', questionParam);
         setQuestion(questionParam);
         setStep("spread-select");
         
         if (returnUrlParam) {
           setReturnUrl(returnUrlParam);
         }
-      } catch (error) {
-        console.error('URL 파라미터 처리 오류:', error);
-        // 오류 발생 시 원본 사용
-        setQuestion(questionParam);
-        setStep("spread-select");
       }
+    } catch (error) {
+      console.error('URL 파라미터 처리 오류:', error);
+      // 오류 발생 시 현재 URL을 콘솔에 출력하여 디버깅
+      console.log('현재 URL:', window.location.href);
     }
   }, []);
 
