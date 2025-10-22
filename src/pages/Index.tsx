@@ -23,12 +23,20 @@ const Index = () => {
     const returnUrlParam = urlParams.get('return_url');
     
     if (questionParam) {
-      // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
-      setQuestion(decodeURIComponent(questionParam));
-      setStep("spread-select");
-      
-      if (returnUrlParam) {
-        setReturnUrl(decodeURIComponent(returnUrlParam));
+      try {
+        // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
+        const decodedQuestion = decodeURIComponent(questionParam);
+        setQuestion(decodedQuestion);
+        setStep("spread-select");
+        
+        if (returnUrlParam) {
+          setReturnUrl(decodeURIComponent(returnUrlParam));
+        }
+      } catch (error) {
+        console.error('URL 디코딩 오류:', error);
+        // 디코딩 실패 시 원본 사용
+        setQuestion(questionParam);
+        setStep("spread-select");
       }
     }
   }, []);
