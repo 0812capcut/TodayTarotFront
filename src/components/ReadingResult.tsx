@@ -10,9 +10,10 @@ interface ReadingResultProps {
   selectedCards: number[];
   question: string;
   onReset: () => void;
+  returnUrl?: string | null;
 }
 
-export function ReadingResult({ spreadType, selectedCards, question, onReset }: ReadingResultProps) {
+export function ReadingResult({ spreadType, selectedCards, question, onReset, returnUrl }: ReadingResultProps) {
   const [positions, setPositions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -209,15 +210,27 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
         </div>
 
         <div className="text-center">
-          <Button
-            onClick={onReset}
-            variant="outline"
-            size="lg"
-            className="bg-secondary hover:bg-secondary/80 border-border"
-          >
-            <RotateCcw className="w-4 h-4 mr-2" />
-            새로운 질문하기
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            {returnUrl && (
+              <Button
+                onClick={() => window.open(returnUrl, '_blank')}
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                GPT로 돌아가기
+              </Button>
+            )}
+            <Button
+              onClick={onReset}
+              variant="outline"
+              size="lg"
+              className="bg-secondary hover:bg-secondary/80 border-border"
+            >
+              <RotateCcw className="w-4 h-4 mr-2" />
+              새로운 질문하기
+            </Button>
+          </div>
         </div>
       </div>
     </div>

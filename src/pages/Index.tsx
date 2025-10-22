@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QuestionInput } from "@/components/QuestionInput";
 import { SpreadSelector } from "@/components/SpreadSelector";
 import { SpreadIntro } from "@/components/SpreadIntro";
@@ -14,6 +14,24 @@ const Index = () => {
   const [question, setQuestion] = useState("");
   const [spreadType, setSpreadType] = useState<SpreadType>("3");
   const [selectedCards, setSelectedCards] = useState<number[]>([]);
+  const [returnUrl, setReturnUrl] = useState<string | null>(null);
+
+  // URL 파라미터 처리 (GPT 연동)
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questionParam = urlParams.get('q');
+    const returnUrlParam = urlParams.get('return_url');
+    
+    if (questionParam) {
+      // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
+      setQuestion(decodeURIComponent(questionParam));
+      setStep("spread-select");
+      
+      if (returnUrlParam) {
+        setReturnUrl(decodeURIComponent(returnUrlParam));
+      }
+    }
+  }, []);
 
   const handleQuestionSubmit = (q: string) => {
     setQuestion(q);
@@ -75,6 +93,7 @@ const Index = () => {
           selectedCards={selectedCards}
           question={question}
           onReset={handleReset}
+          returnUrl={returnUrl}
         />
       )}
     </>
