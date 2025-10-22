@@ -24,11 +24,8 @@ export function QuestionInput({ onSubmit }: QuestionInputProps) {
             <Sparkles className="w-16 h-16 text-accent animate-float" />
           </div>
           <h1 className="text-5xl font-bold mb-4 text-foreground">
-            Tarot by You
+            감성타로 : 니라
           </h1>
-          <p className="text-lg text-muted-foreground">
-            당신의 질문에 타로가 답합니다
-          </p>
         </div>
 
         <div className="bg-card p-8 rounded-2xl shadow-card border border-border">
