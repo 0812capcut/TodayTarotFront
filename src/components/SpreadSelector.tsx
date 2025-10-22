@@ -30,31 +30,31 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           {
             id: "2",
             name: "2장의 카드 선택",
-            description: "A 선택지, B 선택지를 볼 수 있습니다.",
+            description: "",
             cardCount: 2
           },
           {
             id: "3", 
             name: "3장의 카드 선택",
-            description: "과거, 현재, 미래를 볼 수 있습니다.",
+            description: "",
             cardCount: 3
           },
           {
             id: "5",
             name: "5장의 카드 선택", 
-            description: "상황, 문제, 해결, 결과, 전망을 볼 수 있습니다.",
+            description: "",
             cardCount: 5
           },
           {
             id: "7",
             name: "7장의 카드 선택",
-            description: "현재, 과거, 미래, 내면, 외부, 조언, 결과를 볼 수 있습니다.",
+            description: "",
             cardCount: 7
           },
           {
             id: "10",
             name: "10장의 카드 선택",
-            description: "현재 상황, 도전, 과거, 미래, 가능성, 근처 미래, 당신, 외부 영향, 희망, 결과를 볼 수 있습니다.",
+            description: "",
             cardCount: 10
           }
         ];
@@ -149,9 +149,11 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
                   <Sparkles className="w-5 h-5 text-accent opacity-0 group-hover:opacity-100 transition-opacity mx-auto" />
                 </div>
                 
-                <p className="text-sm text-muted-foreground mb-4">
-                  {option.description}
-                </p>
+                {option.description && (
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {option.description}
+                  </p>
+                )}
                 
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-accent font-medium">
