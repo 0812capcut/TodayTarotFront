@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@/components/ui/visually-hidden";
 import { Sparkles } from "lucide-react";
+import { tarotDeck } from "@/data/tarotDeck";
 
 interface CardSelectionProps {
   spreadType: SpreadType;
@@ -98,7 +99,8 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
                 className={cn(
                   "aspect-[2/3] rounded-xl transition-all duration-300",
                   "hover:scale-105 hover:shadow-glow",
-                  isSelected(cardId) && "opacity-0 pointer-events-none",
+                  // 선택된 카드는 클릭만 비활성화하고 시각적으로는 유지
+                  isSelected(cardId) && "pointer-events-none",
                   isCurrentlyFlipping(cardId) && "animate-flip",
                   showInstruction && "opacity-50 pointer-events-none"
                 )}
@@ -114,13 +116,24 @@ export function CardSelection({ spreadType, totalCards, onComplete }: CardSelect
                     "relative overflow-hidden"
                   )}
                 >
-                  {/* 카드 뒷면 이미지 */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                    style={{
-                      backgroundImage: `url('/images/cards/card_back.png')`
-                    }}
-                  />
+                  {/* 카드 앞/뒤면 표시 로직: 선택되었거나 뒤집히는 중이면 앞면 */}
+                  {!((isSelected(cardId)) || isCurrentlyFlipping(cardId)) && (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url('/images/cards/card_back.png')`
+                      }}
+                    />
+                  )}
+                  
+                  {((isSelected(cardId)) || isCurrentlyFlipping(cardId)) && (
+                    <div 
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                      style={{
+                        backgroundImage: `url('${tarotDeck[cardId]?.imagePath || '/images/cards/card_back.png'}')`
+                      }}
+                    />
+                  )}
                 </div>
               </button>
             ))}
