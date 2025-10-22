@@ -108,15 +108,24 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           {/* 카드 선택 가이드 */}
           <div className="mt-6 flex justify-center">
             <div className="bg-card/50 p-6 rounded-xl border border-border/50 text-left max-w-2xl">
-              <h4 className="text-sm font-semibold text-foreground mb-2 text-center">
+              <h4 className="text-sm font-semibold text-foreground mb-4 text-center">
                 💡 카드 선택 가이드
               </h4>
-              <div className="text-xs text-muted-foreground space-y-1">
-                <p>• <strong>2장의 카드 선택</strong>: A 선택지, B 선택지 비교</p>
-                <p>• <strong>3장의 카드 선택</strong>: 과거, 현재, 미래의 흐름</p>
-                <p>• <strong>5장의 카드 선택</strong>: 상황, 문제, 해결, 결과, 전망</p>
-                <p>• <strong>7장의 카드 선택</strong>: 현재, 과거, 미래, 내면, 외부, 조언, 결과</p>
-                <p>• <strong>10장의 카드 선택</strong>: 인생 전체의 흐름과 조언</p>
+              <div className="text-sm text-muted-foreground space-y-3 leading-relaxed">
+                <p>개인 챗GPT 창에 당신의 질문을 입력하고,<br />
+                몇 장의 카드를 뽑는 것이 좋을지 물어보세요.</p>
+                
+                <p>챗GPT가 제안한 카드 수 중,<br />
+                마음이 끌리는 숫자를 선택해 클릭하세요.</p>
+                
+                <p>카드를 모두 선택한 뒤, 결과를<br />
+                다시 챗GPT 대화창에 붙여넣어 리딩을 이어가세요.</p>
+                
+                <p className="text-accent font-medium">무의식과의 연결이 깊을수록,<br />
+                타로는 더 정직하게 당신의 마음을 비춥니다.</p>
+                
+                <p className="text-accent font-medium">조용한 공간에서,<br />
+                오직 당신의 감정에 집중하세요.</p>
               </div>
             </div>
           </div>
