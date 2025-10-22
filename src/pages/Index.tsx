@@ -6,6 +6,7 @@ import { CardSelection } from "@/components/CardSelection";
 import { ReadingResult } from "@/components/ReadingResult";
 import { SpreadType } from "@/types/tarot";
 import { tarotDeck } from "@/data/tarotDeck";
+import { getQuestionData } from "@/utils/gptIntegration";
 
 type Step = "question" | "spread-select" | "intro" | "selection" | "result";
 
@@ -20,23 +21,25 @@ const Index = () => {
   useEffect(() => {
     try {
       const urlParams = new URLSearchParams(window.location.search);
-      const questionParam = urlParams.get('q');
-      const returnUrlParam = urlParams.get('return_url');
+      const sessionId = urlParams.get('session');
       
-      if (questionParam) {
-        // GPT에서 온 경우: 질문 자동 입력하고 배열 선택 단계로 이동
-        console.log('받은 질문:', questionParam);
-        setQuestion(questionParam);
-        setStep("spread-select");
-        
-        if (returnUrlParam) {
-          setReturnUrl(returnUrlParam);
+      if (sessionId) {
+        // 세션 ID로 질문 데이터 가져오기
+        const questionData = getQuestionData(sessionId);
+        if (questionData) {
+          console.log('GPT에서 받은 질문:', questionData.question);
+          setQuestion(questionData.question);
+          setStep("spread-select");
+          
+          if (questionData.returnUrl) {
+            setReturnUrl(questionData.returnUrl);
+          }
+        } else {
+          console.error('세션 데이터를 찾을 수 없습니다:', sessionId);
         }
       }
     } catch (error) {
-      console.error('URL 파라미터 처리 오류:', error);
-      // 오류 발생 시 현재 URL을 콘솔에 출력하여 디버깅
-      console.log('현재 URL:', window.location.href);
+      console.error('GPT 연동 처리 오류:', error);
     }
   }, []);
 
