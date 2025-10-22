@@ -34,12 +34,13 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset }: 
   }, [spreadType]);
 
   const handleCopy = async () => {
-    const cardNames = selectedCards.map((cardId, index) => {
+    const cardDetails = selectedCards.map((cardId, index) => {
       const card = tarotDeck.find((c) => c.id === cardId);
-      return `${index + 1}. ${card?.nameKo || '알 수 없는 카드'}`;
+      const position = positions[index];
+      return `${index + 1}. ${position?.name || `${index + 1}번째 카드`}: ${card?.nameKo || '알 수 없는 카드'} (${card?.name || ''})`;
     }).join('\n');
 
-    const copyText = `당신의 질문: "${question}"\n\n${cardNames}`;
+    const copyText = `당신의 질문: "${question}"\n\n뽑은 카드:\n${cardDetails}\n\n이 타로 리딩을 분석해주세요.`;
 
     try {
       await navigator.clipboard.writeText(copyText);
