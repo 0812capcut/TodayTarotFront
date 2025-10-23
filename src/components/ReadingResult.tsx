@@ -76,64 +76,6 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
           <h2 className="text-4xl font-bold mb-4 text-foreground">
             당신의 타로 카드
           </h2>
-          <div className="bg-card/50 p-6 rounded-xl max-w-2xl mx-auto border border-border">
-            <div className="space-y-4">
-              {/* 질문이 있는 경우에만 표시 */}
-              {question && (
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div className="flex-1">
-                    <p className="text-foreground font-medium italic">
-                      <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
-                    </p>
-                  </div>
-                </div>
-              )}
-              
-              {/* 뽑은 카드 리스트 */}
-              <div className="pt-4 border-t border-border/50">
-                <div className="flex items-start gap-2">
-                  <span className="text-sm text-muted-foreground flex-shrink-0">뽑은 카드:</span>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedCards.map((cardId, index) => {
-                      const card = tarotDeck.find((c) => c.id === cardId);
-                      return (
-                        <span
-                          key={index}
-                          className="bg-primary/10 text-white px-3 py-1 rounded-full text-sm font-medium"
-                        >
-                          {index + 1}. {card?.nameKo || '알 수 없는 카드'}
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              
-              {/* 복사 버튼 */}
-              <div className="pt-4 border-t border-border/50">
-                <div className="flex justify-center">
-                  <Button
-                    onClick={handleCopy}
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    {copied ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        복사됨
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        복사
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -219,6 +161,66 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
               </div>
             );
           })}
+        </div>
+
+        {/* 질문, 뽑은 카드, 복사 버튼 섹션 */}
+        <div className="bg-card/50 p-6 rounded-xl max-w-2xl mx-auto border border-border mb-12">
+          <div className="space-y-4">
+            {/* 질문이 있는 경우에만 표시 */}
+            {question && (
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex-1">
+                  <p className="text-foreground font-medium italic">
+                    <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
+                  </p>
+                </div>
+              </div>
+            )}
+            
+            {/* 뽑은 카드 리스트 */}
+            <div className="pt-4 border-t border-border/50">
+              <div className="flex items-start gap-2">
+                <span className="text-sm text-muted-foreground flex-shrink-0">뽑은 카드:</span>
+                <div className="flex flex-wrap gap-2">
+                  {selectedCards.map((cardId, index) => {
+                    const card = tarotDeck.find((c) => c.id === cardId);
+                    return (
+                      <span
+                        key={index}
+                        className="bg-primary/10 text-white px-3 py-1 rounded-full text-sm font-medium"
+                      >
+                        {index + 1}. {card?.nameKo || '알 수 없는 카드'}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+            
+            {/* 복사 버튼 */}
+            <div className="pt-4 border-t border-border/50">
+              <div className="flex justify-center">
+                <Button
+                  onClick={handleCopy}
+                  variant="outline"
+                  size="sm"
+                  className="flex items-center gap-2"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4" />
+                      복사됨
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4" />
+                      복사
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="text-center">
