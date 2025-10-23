@@ -214,14 +214,14 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
             {returnUrl && (
               <Button
                 onClick={() => {
-                  // 현재 탭에서 GPT 웹으로 이동
-                  window.location.href = returnUrl;
+                  // 창 닫기
+                  window.close();
                 }}
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow"
               >
                 <Sparkles className="w-4 h-4 mr-2" />
-                GPT로 돌아가기
+                창 닫기
               </Button>
             )}
             <Button
