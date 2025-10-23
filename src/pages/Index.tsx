@@ -22,7 +22,18 @@ const Index = () => {
     try {
       const urlParams = new URLSearchParams(window.location.search);
       const sessionId = urlParams.get('session');
+      const stepParam = urlParams.get('step');
       
+      console.log('URL 파라미터 확인:', { sessionId, stepParam, search: window.location.search });
+      
+      // GPT에서 직접 스텝 지정한 경우
+      if (stepParam === 'spread-select') {
+        console.log('스프레드 선택 페이지로 이동');
+        setStep("spread-select");
+        return;
+      }
+      
+      // 기존 세션 ID 방식
       if (sessionId) {
         // 세션 ID로 질문 데이터 가져오기
         const questionData = getQuestionData(sessionId);
