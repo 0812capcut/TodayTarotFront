@@ -213,7 +213,10 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {returnUrl && (
               <Button
-                onClick={() => window.open(returnUrl, '_blank')}
+                onClick={() => {
+                  // 현재 탭에서 GPT 웹으로 이동
+                  window.location.href = returnUrl;
+                }}
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-glow"
               >
