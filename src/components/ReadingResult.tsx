@@ -74,7 +74,7 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
             <Sparkles className="w-10 h-10 text-accent animate-float" />
           </div>
           <h2 className="text-4xl font-bold mb-4 text-foreground">
-            타로 해석
+            당신의 타로 카드
           </h2>
           <div className="bg-card/50 p-6 rounded-xl max-w-2xl mx-auto border border-border">
             <div className="space-y-4">
@@ -86,48 +86,6 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
                       <span className="text-sm text-muted-foreground">당신의 질문: </span>"{question}"
                     </p>
                   </div>
-                  <Button
-                    onClick={handleCopy}
-                    variant="outline"
-                    size="sm"
-                    className="sm:ml-4 flex items-center gap-2"
-                  >
-                    {copied ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        복사됨
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        복사
-                      </>
-                    )}
-                  </Button>
-                </div>
-              )}
-              
-              {/* GPT 웹 사용자용 복사 버튼 */}
-              {!question && (
-                <div className="flex justify-center">
-                  <Button
-                    onClick={handleCopy}
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    {copied ? (
-                      <>
-                        <Check className="w-4 h-4" />
-                        복사됨
-                      </>
-                    ) : (
-                      <>
-                        <Copy className="w-4 h-4" />
-                        복사
-                      </>
-                    )}
-                  </Button>
                 </div>
               )}
               
@@ -148,6 +106,30 @@ export function ReadingResult({ spreadType, selectedCards, question, onReset, re
                       );
                     })}
                   </div>
+                </div>
+              </div>
+              
+              {/* 복사 버튼 */}
+              <div className="pt-4 border-t border-border/50">
+                <div className="flex justify-center">
+                  <Button
+                    onClick={handleCopy}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2"
+                  >
+                    {copied ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        복사됨
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        복사
+                      </>
+                    )}
+                  </Button>
                 </div>
               </div>
             </div>
