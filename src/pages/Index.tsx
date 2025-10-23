@@ -32,8 +32,15 @@ const Index = () => {
         console.log('해시로 스프레드 선택 페이지로 이동');
         setStep("spread-select");
         
-        // return URL 파라미터 확인
-        const returnUrl = urlParams.get('return');
+        // return URL 파라미터 확인 (해시에서 추출)
+        let returnUrl = urlParams.get('return');
+        
+        // 해시에 파라미터가 포함된 경우
+        if (!returnUrl && hash.includes('?return=')) {
+          const hashParams = new URLSearchParams(hash.split('?')[1]);
+          returnUrl = hashParams.get('return');
+        }
+        
         console.log('returnUrl 파라미터:', returnUrl);
         if (returnUrl) {
           setReturnUrl(returnUrl);
