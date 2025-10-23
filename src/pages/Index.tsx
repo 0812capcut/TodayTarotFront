@@ -23,8 +23,24 @@ const Index = () => {
       const urlParams = new URLSearchParams(window.location.search);
       const sessionId = urlParams.get('session');
       const stepParam = urlParams.get('step');
+      const hash = window.location.hash;
       
-      console.log('URL 파라미터 확인:', { sessionId, stepParam, search: window.location.search });
+      console.log('URL 파라미터 확인:', { sessionId, stepParam, hash, search: window.location.search });
+      
+      // 해시로 온 경우 (#spread-select)
+      if (hash === '#spread-select') {
+        console.log('해시로 스프레드 선택 페이지로 이동');
+        setStep("spread-select");
+        
+        // return URL 파라미터 확인
+        const returnUrl = urlParams.get('return');
+        if (returnUrl) {
+          setReturnUrl(returnUrl);
+        } else {
+          setReturnUrl('https://chatgpt.com'); // 기본값
+        }
+        return;
+      }
       
       // GPT에서 직접 스텝 지정한 경우
       if (stepParam === 'spread-select') {
