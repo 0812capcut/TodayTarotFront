@@ -28,7 +28,7 @@ const Index = () => {
       console.log('URL 파라미터 확인:', { sessionId, stepParam, hash, search: window.location.search });
       
       // 해시로 온 경우 (#spread-select)
-      if (hash === '#spread-select') {
+      if (hash.includes('#spread-select')) {
         console.log('해시로 스프레드 선택 페이지로 이동');
         setStep("spread-select");
         
