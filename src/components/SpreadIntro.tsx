@@ -74,15 +74,18 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
 
           <div className="text-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                onClick={onBack}
-                variant="outline"
-                size="lg"
-                className="bg-secondary hover:bg-secondary/80 border-border"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                질문 다시 하기
-              </Button>
+              {/* 질문이 있는 경우에만 "질문 다시 하기" 버튼 표시 */}
+              {question && (
+                <Button
+                  onClick={onBack}
+                  variant="outline"
+                  size="lg"
+                  className="bg-secondary hover:bg-secondary/80 border-border"
+                >
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  질문 다시 하기
+                </Button>
+              )}
               <Button
                 onClick={onStart}
                 size="lg"

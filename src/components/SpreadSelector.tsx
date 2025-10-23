@@ -86,17 +86,20 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
       <div className="max-w-6xl mx-auto">
         {/* 헤더 */}
         <div className="text-center mb-12 animate-fade-in">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onBack}
-              className="text-muted-foreground hover:text-foreground"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              질문 다시 하기
-            </Button>
-          </div>
+          {/* 질문이 있는 경우에만 "질문 다시 하기" 버튼 표시 */}
+          {question && (
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={onBack}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                질문 다시 하기
+              </Button>
+            </div>
+          )}
           
           <h1 className="text-4xl font-bold mb-4 text-foreground">
             원하는 카드 수를 선택하세요
