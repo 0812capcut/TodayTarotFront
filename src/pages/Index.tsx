@@ -34,10 +34,13 @@ const Index = () => {
         
         // return URL 파라미터 확인
         const returnUrl = urlParams.get('return');
+        console.log('returnUrl 파라미터:', returnUrl);
         if (returnUrl) {
           setReturnUrl(returnUrl);
+          console.log('returnUrl 설정됨:', returnUrl);
         } else {
           setReturnUrl('https://chatgpt.com'); // 기본값
+          console.log('기본값 사용: https://chatgpt.com');
         }
         return;
       }
