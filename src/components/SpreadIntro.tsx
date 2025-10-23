@@ -44,10 +44,13 @@ export function SpreadIntro({ spreadType, question, onStart, onBack }: SpreadInt
             {spreadType}장 배열법
           </h2>
 
-          <div className="bg-secondary/50 p-6 rounded-xl mb-8 border border-border">
-            <p className="text-sm text-muted-foreground mb-2">당신의 질문:</p>
-            <p className="text-foreground font-medium italic">"{question}"</p>
-          </div>
+          {/* 질문이 있는 경우에만 표시 */}
+          {question && (
+            <div className="bg-secondary/50 p-6 rounded-xl mb-8 border border-border">
+              <p className="text-sm text-muted-foreground mb-2">당신의 질문:</p>
+              <p className="text-foreground font-medium italic">"{question}"</p>
+            </div>
+          )}
 
           <div className="mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

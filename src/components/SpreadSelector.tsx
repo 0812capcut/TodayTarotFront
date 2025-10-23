@@ -101,9 +101,12 @@ export function SpreadSelector({ question, onSelect, onBack }: SpreadSelectorPro
           <h1 className="text-4xl font-bold mb-4 text-foreground">
             원하는 카드 수를 선택하세요
           </h1>
-          <p className="text-lg text-muted-foreground mb-2">
-            질문: <span className="text-accent font-medium">"{question}"</span>
-          </p>
+          {/* 질문이 있는 경우에만 표시 */}
+          {question && (
+            <p className="text-lg text-muted-foreground mb-2">
+              질문: <span className="text-accent font-medium">"{question}"</span>
+            </p>
+          )}
           
           {/* 카드 선택 가이드 */}
           <div className="mt-6 flex justify-center">
